@@ -4,13 +4,13 @@ FROM node:18
 WORKDIR /app
 
 # Copy both scripts (Challenge A and Challenge B) to the container
-COPY generateRandomData.js readRandomData.js package.json /app/
+COPY challenge_a.js challenge_b.js package.json /app/
 
 # Install dependencies
 RUN npm install
 
 # Generate the input file
-RUN node generateRandomData.js
+RUN node challenge_a.js
 
 # Command to run Challenge B and save the output
-CMD ["sh", "-c", "node readRandomData.js > /app/output.txt && tail -f /app/output.txt"]
+CMD ["sh", "-c", "node challenge_b.js > /app/output.txt && tail -f /app/output.txt"]
